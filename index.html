@@ -1,53 +1,92 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Viking Rise Dashboard</title>
+
 <style>
+*{box-sizing:border-box}
 body{
-  margin:0;
-  font-family:Arial,sans-serif;
-  background:#10141b;
-  color:white;
+ margin:0;
+ font-family:Arial,sans-serif;
+ background:#07131f;
+ color:white;
 }
 .header{
-  padding:20px;
-  background:#18202b;
-  text-align:center;
-  font-size:24px;
-  font-weight:bold;
+ padding:22px 16px;
+ text-align:center;
+ background:#102538;
+ border-bottom:1px solid #29445c;
 }
+.header h1{margin:0;font-size:25px}
+.header p{margin:6px 0 0;color:#9fb2c3}
+
 .card{
-  margin:15px;
-  padding:18px;
-  border-radius:15px;
-  background:linear-gradient(135deg,#253447,#151b24);
-  box-shadow:0 5px 20px #0008;
+ margin:14px;
+ padding:18px;
+ border-radius:16px;
+ background:#102a40;
+ box-shadow:0 5px 18px #0006;
 }
+.card h2{margin-top:0}
+
+.resources{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:12px;
+}
+
 .resource{
-  display:flex;
-  justify-content:space-between;
-  padding:10px 0;
-  border-bottom:1px solid #ffffff18;
+ padding:16px 10px;
+ border-radius:14px;
+ background:#173750;
+ text-align:center;
 }
+
+.icon{font-size:30px}
+.name{
+ color:#b9c8d5;
+ margin-top:5px;
+}
+.value{
+ font-size:23px;
+ font-weight:bold;
+ margin:8px 0;
+}
+
+.controls{
+ display:flex;
+ justify-content:center;
+ gap:8px;
+}
+
 button{
-  width:100%;
-  padding:14px;
-  margin-top:10px;
-  border:0;
-  border-radius:10px;
-  background:#d98b32;
-  color:white;
-  font-size:16px;
-  font-weight:bold;
+ border:0;
+ border-radius:9px;
+ padding:9px 15px;
+ font-size:16px;
+ font-weight:bold;
+ background:#d98b32;
+ color:white;
 }
+
+button:active{transform:scale(.95)}
+
+.bigButton{
+ width:100%;
+ padding:14px;
+ margin-top:8px;
+}
+
 .status{
-  color:#58d68d;
-  font-weight:bold;
+ color:#4ddd88;
+ font-weight:bold;
 }
-.small{
-  color:#aeb8c5;
-  font-size:13px;
+
+.log{
+ color:#aebdca;
+ font-size:14px;
+ line-height:1.7;
 }
 </style>
 </head>
@@ -55,60 +94,116 @@ button{
 <body>
 
 <div class="header">
-  ⚔️ Viking Rise
-  <div class="small">Safe Farming Dashboard</div>
+ <h1>⚔️ VIKING RISE</h1>
+ <p>SAFE RUNNER DASHBOARD</p>
 </div>
 
 <div class="card">
-  <h2>🏰 Kingdom Status</h2>
-  <p>City Hall: <b>Level 1</b></p>
-  <p>Status: <span class="status">● Online</span></p>
+ <h2>🏰 Kingdom Status</h2>
+ <p>City Hall: <b>Level 1</b></p>
+ <p>Status: <span class="status">● ONLINE</span></p>
 </div>
 
 <div class="card">
-  <h2>📦 Resources</h2>
+ <h2>📦 Resources</h2>
+
+ <div class="resources">
 
   <div class="resource">
-    <span>🪵 Wood</span>
-    <b>0</b>
+   <div class="icon">🪵</div>
+   <div class="name">WOOD</div>
+   <div class="value" id="wood">0</div>
+   <div class="controls">
+    <button onclick="change('wood',-100)">−</button>
+    <button onclick="change('wood',100)">+</button>
+   </div>
   </div>
 
   <div class="resource">
-    <span>🌾 Food</span>
-    <b>0</b>
+   <div class="icon">🌾</div>
+   <div class="name">FOOD</div>
+   <div class="value" id="food">0</div>
+   <div class="controls">
+    <button onclick="change('food',-100)">−</button>
+    <button onclick="change('food',100)">+</button>
+   </div>
   </div>
 
   <div class="resource">
-    <span>🪨 Stone</span>
-    <b>0</b>
+   <div class="icon">🪨</div>
+   <div class="name">STONE</div>
+   <div class="value" id="stone">0</div>
+   <div class="controls">
+    <button onclick="change('stone',-100)">−</button>
+    <button onclick="change('stone',100)">+</button>
+   </div>
   </div>
 
   <div class="resource">
-    <span>💰 Gold</span>
-    <b>0</b>
+   <div class="icon">💰</div>
+   <div class="name">GOLD</div>
+   <div class="value" id="gold">0</div>
+   <div class="controls">
+    <button onclick="change('gold',-100)">−</button>
+    <button onclick="change('gold',100)">+</button>
+   </div>
   </div>
+
+ </div>
 </div>
 
 <div class="card">
-  <h2>🚜 Farming</h2>
-  <p class="small">
-    Use this panel to track your farming tasks manually.
-  </p>
+ <h2>🚜 Farming Tasks</h2>
 
-  <button onclick="alert('Gathering task recorded')">
-    ➕ Start Farming Task
-  </button>
+ <button class="bigButton" onclick="addLog('Farming task started')">
+  ▶ START TASK
+ </button>
 
-  <button onclick="alert('Task marked complete')">
-    ✅ Complete Task
-  </button>
+ <button class="bigButton" onclick="addLog('Farming task completed')">
+  ✅ COMPLETE TASK
+ </button>
 </div>
 
 <div class="card">
-  <h2>📊 Activity</h2>
-  <p>Tasks completed: <b>0</b></p>
-  <p>Last update: <b>Not recorded</b></p>
+ <h2>📊 Activity Log</h2>
+ <div class="log" id="log">
+  Ready...
+ </div>
 </div>
+
+<script>
+
+let resources={
+ wood:0,
+ food:0,
+ stone:0,
+ gold:0
+};
+
+function change(type,amount){
+
+ resources[type]+=amount;
+
+ if(resources[type]<0)
+   resources[type]=0;
+
+ document.getElementById(type).innerText=
+   resources[type].toLocaleString();
+
+ addLog(type.toUpperCase()+" updated: "+
+   resources[type].toLocaleString());
+}
+
+function addLog(message){
+
+ let now=new Date().toLocaleTimeString();
+
+ document.getElementById("log").innerHTML=
+   now+" — "+message+
+   "<br>"+document.getElementById("log").innerHTML;
+}
+
+</script>
 
 </body>
-  </html>
+</html>
