@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Viking Rise Dashboard</title>
+<style>
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#10141b;
+  color:white;
+}
+.header{
+  padding:20px;
+  background:#18202b;
+  text-align:center;
+  font-size:24px;
+  font-weight:bold;
+}
+.card{
+  margin:15px;
+  padding:18px;
+  border-radius:15px;
+  background:linear-gradient(135deg,#253447,#151b24);
+  box-shadow:0 5px 20px #0008;
+}
+.resource{
+  display:flex;
+  justify-content:space-between;
+  padding:10px 0;
+  border-bottom:1px solid #ffffff18;
+}
+button{
+  width:100%;
+  padding:14px;
+  margin-top:10px;
+  border:0;
+  border-radius:10px;
+  background:#d98b32;
+  color:white;
+  font-size:16px;
+  font-weight:bold;
+}
+.status{
+  color:#58d68d;
+  font-weight:bold;
+}
+.small{
+  color:#aeb8c5;
+  font-size:13px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  ⚔️ Viking Rise
+  <div class="small">Safe Farming Dashboard</div>
+</div>
+
+<div class="card">
+  <h2>🏰 Kingdom Status</h2>
+  <p>City Hall: <b>Level 1</b></p>
+  <p>Status: <span class="status">● Online</span></p>
+</div>
+
+<div class="card">
+  <h2>📦 Resources</h2>
+
+  <div class="resource">
+    <span>🪵 Wood</span>
+    <b>0</b>
+  </div>
+
+  <div class="resource">
+    <span>🌾 Food</span>
+    <b>0</b>
+  </div>
+
+  <div class="resource">
+    <span>🪨 Stone</span>
+    <b>0</b>
+  </div>
+
+  <div class="resource">
+    <span>💰 Gold</span>
+    <b>0</b>
+  </div>
+</div>
+
+<div class="card">
+  <h2>🚜 Farming</h2>
+  <p class="small">
+    Use this panel to track your farming tasks manually.
+  </p>
+
+  <button onclick="alert('Gathering task recorded')">
+    ➕ Start Farming Task
+  </button>
+
+  <button onclick="alert('Task marked complete')">
+    ✅ Complete Task
+  </button>
+</div>
+
+<div class="card">
+  <h2>📊 Activity</h2>
+  <p>Tasks completed: <b>0</b></p>
+  <p>Last update: <b>Not recorded</b></p>
+</div>
+
+</body>
+  </html>
